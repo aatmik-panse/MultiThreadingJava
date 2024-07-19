@@ -5,12 +5,12 @@ public class RaceCondition {
     public static void main(String[] args) {
         Thread one = new Thread(()->{
             for (int i = 0; i < 10000; i++) {
-                count++;
+                increment();
             }
         });
         Thread two = new Thread(()->{
             for (int i = 0; i < 10000; i++) {
-                count++;
+                increment();
             }
         });
         one.start();
@@ -22,6 +22,9 @@ public class RaceCondition {
             e.printStackTrace();
         }
         System.out.println(count);
+    }
+    public synchronized static void increment(){
+        count++;
     }
 }
 
@@ -60,5 +63,12 @@ And then the thread one stores the incremented value.
 SO the count variable is incremented by 1 instead of 2.
 This is called
 the lost update .
+###This is also Critical Section Problem.
+    Critical Section is a section of code that is accessed by multiple threads and where the shared data is accessed.
+
+## TO solve this problem we can use the synchronized keyword.
+## The synchronized keyword is used to lock an object for any shared resource.
+## When a thread invokes a synchronized method,
+it automatically acquires the lock for that object and releases it when the thread completes its task.
 
 */
