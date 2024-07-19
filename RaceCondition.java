@@ -70,5 +70,17 @@ the lost update .
 ## The synchronized keyword is used to lock an object for any shared resource.
 ## When a thread invokes a synchronized method,
 it automatically acquires the lock for that object and releases it when the thread completes its task.
+But this is not the best solution because it is slow.
+?? When we apply synchronized to a method, the lock is acquired on the object.
+and this leads to block the other threads from accessing the object.
+Class level lock:
+But what if we want to allow multiple threads to access the object but not the critical section?
+We can use the synchronized block.
+The synchronized block is used to lock an object for any shared resource.
+Scope of synchronized block is smaller than the method.
+The syntax of synchronized block is:
+synchronized(object){
+    //code
+}
 
 */
